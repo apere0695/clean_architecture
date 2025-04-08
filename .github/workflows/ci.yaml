@@ -4,6 +4,7 @@ on:
     branches: ["main", "develop"]
   push:
     branches: ["main", "develop"]
+
 jobs:
   ejecutar_pruebas:
     name: Ejecutar pruebas
@@ -12,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.13.5'  # Especifica la versión de Flutter que estás usando
+          flutter-version: '3.29.2'  # ✅ Versión actual de Flutter
       - name: Install dependencies
         run: flutter pub get
       - name: Clean
@@ -30,7 +31,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.13.5'  # Especifica la versión de Flutter que estás usando
+          flutter-version: '3.29.2'  # ✅ Actualizado
       - name: Install dependencies
         run: flutter pub get
       - name: Build APK
@@ -44,7 +45,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.13.5'  # Especifica la versión de Flutter que estás usando
+          flutter-version: '3.29.2'  # ✅ También aquí
       - name: Install dependencies
         run: flutter pub get
       - name: Build iOS
