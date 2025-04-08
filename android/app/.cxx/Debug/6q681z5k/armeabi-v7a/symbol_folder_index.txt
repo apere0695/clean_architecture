@@ -1,0 +1,1 @@
+/Users/apere/flutter proyect/practica_hexagonal_bloc/android/app/build/intermediates/cxx/Debug/6q681z5k/obj/armeabi-v7a

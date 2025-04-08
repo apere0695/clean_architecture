@@ -1,13 +1,13 @@
 buildscript {
-    ext.kotlin_version = '1.7.10'
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.android.tools.build:gradle:8.1.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.21"
+        // NO pongas el plugin de Flutter acá
     }
 }
 
@@ -18,12 +18,12 @@ allprojects {
     }
 }
 
-rootProject.buildDir = '../build'
+def newBuildDir = new File(rootProject.buildDir, "../../build")
+rootProject.buildDir = newBuildDir
+
 subprojects {
-    project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-subprojects {
-    project.evaluationDependsOn(':app')
+    def newSubprojectBuildDir = new File(newBuildDir, project.name)
+    buildDir = newSubprojectBuildDir
 }
 
 tasks.register("clean", Delete) {
