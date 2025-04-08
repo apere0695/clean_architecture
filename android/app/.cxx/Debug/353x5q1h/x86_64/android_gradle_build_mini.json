@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/apere/development/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/apere/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/apere/flutter proyect/practica_hexagonal_bloc/android/app/.cxx/Debug/353x5q1h/x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/apere/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/apere/flutter proyect/practica_hexagonal_bloc/android/app/.cxx/Debug/353x5q1h/x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

@@ -1,0 +1,1 @@
+/Users/apere/flutter proyect/practica_hexagonal_bloc/build/app/intermediates/cxx/Debug/353x5q1h/obj/x86_64
