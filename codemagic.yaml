@@ -1,0 +1,51 @@
+workflows:
+  android-workflow:
+    name: Android Workflow
+    instance_type: mac_mini_m1 # O el tipo de máquina que prefieras
+    environment:
+      flutter: stable # O la versión específica de Flutter
+      groups:
+        - email_credentials # Grupo para las credenciales de distribución (opcional, si usas variables seguras)
+    scripts:
+      # Paso 1: Limpieza de paquetes
+      - name: Clean Flutter project
+        script: |
+          flutter clean
+        # Explicación: Elimina archivos temporales y caché para asegurar una compilación limpia.
+
+      # Paso 2: Obtener paquetes
+      - name: Get Flutter packages
+        script: |
+          flutter pub get
+        # Explicación: Descarga todas las dependencias definidas en pubspec.yaml.
+
+      # Paso 3: Analizar el código
+      - name: Analyze code
+        script: |
+          flutter analyze
+        # Explicación: Verifica problemas estáticos en el código (linter). Si hay errores graves, el build fallará.
+
+      # Paso 4: Ejecutar pruebas
+      - name: Run unit tests
+        script: |
+          flutter test
+        # Explicación: Ejecuta pruebas unitarias definidas en la carpeta test/. Si usas pruebas de integración u otras, ajusta el comando.
+
+      # Paso 5: Construir la APK
+      - name: Build APK
+        script: |
+          flutter build apk --release
+        # Explicación: Genera una APK en modo release para Android.
+
+    artifacts:
+      - build/**/outputs/**/*.apk
+      # Explicación: Especifica que la APK generada estará disponible como artefacto.
+
+    publishing:
+      email:
+        recipients:
+          - aalan_666@yahoo.com
+        notify:
+          success: true
+          failure: true
+      # Explicación: Envía la APK por correo a los destinatarios indicados si el build es exitoso. También notifica si falla.
