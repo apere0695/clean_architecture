@@ -20,7 +20,6 @@ workflows:
           flutter build apk --release
       - name: Install Firebase CLI
         script: |
-          # Verifica si firebase CLI ya está instalada
           if ! command -v firebase &> /dev/null; then
             npm install -g firebase-tools
           else
@@ -30,7 +29,8 @@ workflows:
         script: |
           firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
             --app $FIREBASE_APP_ID \
-            --token $FIREBASE_TOKEN
+            --token $FIREBASE_TOKEN \
+            --groups "testers"
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
     publishing:
