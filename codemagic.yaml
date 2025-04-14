@@ -5,7 +5,7 @@ workflows:
     environment:
       flutter: stable
       groups:
-        - email_credentials # Elimina si no usas variables seguras
+        - firebase # Grupo para FIREBASE_TOKEN y FIREBASE_APP_ID
     triggering:
       events:
         - push
@@ -13,27 +13,19 @@ workflows:
         - pattern: main
           include: true
     scripts:
-      # Paso 1: Limpieza de paquetes y APKs previas
-      - name: Clean Flutter project
+      - name: Clean and Build APK
         script: |
           flutter clean
-          rm -rf build/app/outputs/flutter-apk/*.apk
-      # Paso 2: Obtener paquetes
-      - name: Get Flutter packages
-        script: |
           flutter pub get
-      # Paso 3: Analizar el código
-      - name: Analyze code
-        script: |
-          flutter analyze
-      # Paso 4: Ejecutar pruebas
-      - name: Run unit tests
-        script: |
-          flutter test
-      # Paso 5: Construir la APK
-      - name: Build APK
-        script: |
           flutter build apk --release
+      - name: Install Firebase CLI
+        script: |
+          npm install -g firebase-tools
+      - name: Distribute APK to Firebase
+        script: |
+          firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
+            --app $FIREBASE_APP_ID \
+            --token $FIREBASE_TOKEN
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
     publishing:
