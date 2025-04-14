@@ -10,6 +10,7 @@ class TaskRender extends StatefulWidget {
 }
 
 class _TaskRenderState extends State<TaskRender> {
+  // frases
   final List<String> frases = [
     "Sigue adelante.",
     "Hoy es un gran día.",
