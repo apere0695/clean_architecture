@@ -5,7 +5,7 @@ workflows:
     environment:
       flutter: stable
       groups:
-        - firebase
+        - firebase # Grupo para FIREBASE_TOKEN y FIREBASE_APP_ID
     triggering:
       events:
         - push
@@ -17,30 +17,12 @@ workflows:
         script: |
           flutter clean
           flutter pub get
-
-      - name: Increment Version Code (In-Memory Only)
+      - name: Build APK with Auto-incremented Version
         script: |
-          # Extraer versionName y versionCode del pubspec.yaml
-          VERSION_LINE=$(grep 'version:' pubspec.yaml)
-          VERSION_NAME=$(echo $VERSION_LINE | awk '{print $2}' | cut -d'+' -f1)
-          VERSION_CODE=$(echo $VERSION_LINE | awk '{print $2}' | cut -d'+' -f2)
-
-          # Incrementar versionCode
-          NEW_VERSION_CODE=$((VERSION_CODE + 1))
-
-          # Mostrar nueva versión
-          echo "Building with version: $VERSION_NAME+$NEW_VERSION_CODE"
-
-          # Exportar como variables de entorno
-          echo "VERSION_NAME=$VERSION_NAME" >> $CM_ENV
-          echo "VERSION_CODE=$NEW_VERSION_CODE" >> $CM_ENV
-
-      - name: Build APK with Updated Version
-        script: |
+          VERSION_NAME=$(grep 'version:' pubspec.yaml | awk '{print $2}' | cut -d'+' -f1)
           flutter build apk --release \
-            --build-name=$VERSION_NAME+$VERSION_CODE \
-            --build-number=$VERSION_CODE
-
+            --build-name=$VERSION_NAME+$PROJECT_BUILD_NUMBER \
+            --build-number=$PROJECT_BUILD_NUMBER
       - name: Install Firebase CLI
         script: |
           if ! command -v firebase &> /dev/null; then
@@ -48,17 +30,14 @@ workflows:
           else
             echo "Firebase CLI already installed, skipping installation"
           fi
-
       - name: Distribute APK to Firebase
         script: |
           firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
             --app $FIREBASE_APP_ID \
             --token $FIREBASE_TOKEN \
             --groups "testers"
-
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
-
     publishing:
       email:
         recipients:
