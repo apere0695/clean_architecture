@@ -17,12 +17,34 @@ workflows:
         script: |
           flutter clean
           flutter pub get
-      - name: Build APK with Auto-incremented Version
+      - name: Increment Version Code and Update pubspec.yaml
         script: |
+          # Extraer versionName y versionCode del pubspec.yaml
           VERSION_NAME=$(grep 'version:' pubspec.yaml | awk '{print $2}' | cut -d'+' -f1)
+          VERSION_CODE=$(grep 'version:' pubspec.yaml | awk '{print $2}' | cut -d'+' -f2)
+          
+          # Incrementar versionCode
+          NEW_VERSION_CODE=$((VERSION_CODE + 1))
+          
+          # Actualizar pubspec.yaml con el nuevo versionCode
+          sed -i '' "s/version: $VERSION_NAME+$VERSION_CODE/version: $VERSION_NAME+$NEW_VERSION_CODE/" pubspec.yaml
+          
+          # Hacer commit y push de los cambios
+          git config --global user.email "codemagic@ci.com"
+          git config --global user.name "Codemagic CI"
+          git add pubspec.yaml
+          git commit -m "Increment versionCode to $NEW_VERSION_CODE"
+          git push origin main
+      - name: Build APK with Updated Version
+        script: |
+          # Extraer los valores actualizados
+          VERSION_NAME=$(grep 'version:' pubspec.yaml | awk '{print $2}' | cut -d'+' -f1)
+          NEW_VERSION_CODE=$(grep 'version:' pubspec.yaml | awk '{print $2}' | cut -d'+' -f2)
+          
+          # Construir el APK con el versionName y versionCode actualizados
           flutter build apk --release \
-            --build-name=$VERSION_NAME.$PROJECT_BUILD_NUMBER \
-            --build-number=$PROJECT_BUILD_NUMBER
+            --build-name=$VERSION_NAME+$NEW_VERSION_CODE \
+            --build-number=$NEW_VERSION_CODE
       - name: Install Firebase CLI
         script: |
           if ! command -v firebase &> /dev/null; then
