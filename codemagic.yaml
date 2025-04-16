@@ -13,11 +13,16 @@ workflows:
         - pattern: main
           include: true
     scripts:
-      - name: Clean and Build APK
+      - name: Clean and Get Dependencies
         script: |
           flutter clean
           flutter pub get
-          flutter build apk --release
+      - name: Build APK with Auto-incremented Version
+        script: |
+          VERSION_NAME=$(grep 'version:' pubspec.yaml | awk '{print $2}' | cut -d'+' -f1)
+          flutter build apk --release \
+            --build-name=$VERSION_NAME.$PROJECT_BUILD_NUMBER \
+            --build-number=$PROJECT_BUILD_NUMBER
       - name: Install Firebase CLI
         script: |
           if ! command -v firebase &> /dev/null; then
