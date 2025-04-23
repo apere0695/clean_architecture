@@ -47,3 +47,4 @@ app.*.map.json
 
 # Ignore key.properties file
 android/key.properties
+android/upload-keystore.jks
