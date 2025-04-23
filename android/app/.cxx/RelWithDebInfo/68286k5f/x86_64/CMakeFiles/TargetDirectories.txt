@@ -1,0 +1,2 @@
+/Users/apere/flutter proyect/practica_hexagonal_bloc/android/app/.cxx/RelWithDebInfo/68286k5f/x86_64/CMakeFiles/edit_cache.dir
+/Users/apere/flutter proyect/practica_hexagonal_bloc/android/app/.cxx/RelWithDebInfo/68286k5f/x86_64/CMakeFiles/rebuild_cache.dir

@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.practica_hexagonal_bloc"
+3    package="com.alan.practica_hexagonal_bloc"
 4    android:versionCode="1"
 5    android:versionName="1.0.0" >
 6
@@ -18,12 +18,12 @@
 16
 17    <permission
 17-->[androidx.core:core:1.13.1] /Users/apere/.gradle/caches/transforms-3/e6afb4b450a4a727b7e015fde4b15db4/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
-18        android:name="com.example.practica_hexagonal_bloc.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+18        android:name="com.alan.practica_hexagonal_bloc.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
 18-->[androidx.core:core:1.13.1] /Users/apere/.gradle/caches/transforms-3/e6afb4b450a4a727b7e015fde4b15db4/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
 19        android:protectionLevel="signature" />
 19-->[androidx.core:core:1.13.1] /Users/apere/.gradle/caches/transforms-3/e6afb4b450a4a727b7e015fde4b15db4/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
 20
-21    <uses-permission android:name="com.example.practica_hexagonal_bloc.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+21    <uses-permission android:name="com.alan.practica_hexagonal_bloc.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 21-->[androidx.core:core:1.13.1] /Users/apere/.gradle/caches/transforms-3/e6afb4b450a4a727b7e015fde4b15db4/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
 21-->[androidx.core:core:1.13.1] /Users/apere/.gradle/caches/transforms-3/e6afb4b450a4a727b7e015fde4b15db4/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
 22
@@ -36,7 +36,7 @@
 28        android:icon="@mipmap/ic_launcher"
 29        android:label="practica_hexagonal_bloc" >
 30        <activity
-31            android:name="com.example.practica_hexagonal_bloc.MainActivity"
+31            android:name="com.alan.practica_hexagonal_bloc.MainActivity"
 32            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
 33            android:exported="true"
 34            android:hardwareAccelerated="true"
@@ -85,7 +85,7 @@
 70-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/apere/.gradle/caches/transforms-3/4b6ced9e36b082aa28c85a7ed8f71b64/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:24:9-32:20
 71            android:name="androidx.startup.InitializationProvider"
 71-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/apere/.gradle/caches/transforms-3/4b6ced9e36b082aa28c85a7ed8f71b64/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:25:13-67
-72            android:authorities="com.example.practica_hexagonal_bloc.androidx-startup"
+72            android:authorities="com.alan.practica_hexagonal_bloc.androidx-startup"
 72-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/apere/.gradle/caches/transforms-3/4b6ced9e36b082aa28c85a7ed8f71b64/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:26:13-68
 73            android:exported="false" >
 73-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/apere/.gradle/caches/transforms-3/4b6ced9e36b082aa28c85a7ed8f71b64/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:27:13-37

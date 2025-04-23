@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.practica_hexagonal_bloc.app-mergeDebugResources-22:/values-tl/values-tl.xml",
+            "outputFile": "com.alan.practica_hexagonal_bloc.app-mergeDebugResources-22:/values-tl/values-tl.xml",
             "map": [
                 {
                     "source": "/Users/apere/.gradle/caches/transforms-3/e6afb4b450a4a727b7e015fde4b15db4/transformed/core-1.13.1/res/values-tl/values-tl.xml",

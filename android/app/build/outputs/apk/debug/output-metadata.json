@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.example.practica_hexagonal_bloc",
+  "applicationId": "com.alan.practica_hexagonal_bloc",
   "variantName": "debug",
   "elements": [
     {

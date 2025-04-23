@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.practica_hexagonal_bloc.app-mergeDebugResources-22:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.alan.practica_hexagonal_bloc.app-mergeDebugResources-22:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
                     "source": "/Users/apere/flutter proyect/practica_hexagonal_bloc/android/app/src/main/res/values-night/styles.xml",
