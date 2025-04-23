@@ -5,7 +5,7 @@ workflows:
     environment:
       flutter: stable
       groups:
-        - firebase # Grupo para FIREBASE_TOKEN y FIREBASE_APP_ID
+        - firebase # Grupo para FIREBASE_APP_ID y FIREBASE_SERVICE_ACCOUNT
     triggering:
       events:
         - push
@@ -30,11 +30,16 @@ workflows:
           else
             echo "Firebase CLI already installed, skipping installation"
           fi
+      - name: Set up Firebase Service Account
+        script: |
+          # Crear un archivo JSON con las credenciales de la cuenta de servicio
+          echo "$FIREBASE_SERVICE_ACCOUNT" > "$CM_BUILD_DIR/firebase_credentials.json"
+          # Verificar que GOOGLE_APPLICATION_CREDENTIALS esté configurado
+          echo "GOOGLE_APPLICATION_CREDENTIALS is set to: $GOOGLE_APPLICATION_CREDENTIALS"
       - name: Distribute APK to Firebase
         script: |
           firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
             --app $FIREBASE_APP_ID \
-            --token $FIREBASE_TOKEN \
             --groups "testers"
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
