@@ -16,16 +16,13 @@ void main() {
   blocTest<TaskBloc, TaskState>(
     'emits [TaskLoadingState, TaskLoadedState] when tasks are fetched successfully',
     build: () {
-      print('Building TaskBloc...');
       return TaskBloc(mockGetTasksUseCase);
     },
     act: (bloc) {
-      print('Simulating successful fetch...');
       when(mockGetTasksUseCase()).thenAnswer((_) async => [
             Task(id: 1, title: 'Task 1', completed: false),
             Task(id: 2, title: 'Task 2', completed: true),
           ]);
-      print('Event TaskLoadEvent added.');
     },
     expect: () {
       print('Expecting TaskLoadingState and TaskLoadedState...');
@@ -47,12 +44,9 @@ void main() {
       return TaskBloc(mockGetTasksUseCase);
     },
     act: (bloc) {
-      print('Simulating fetch failure...');
       when(mockGetTasksUseCase()).thenThrow(Exception('Failed to fetch tasks'));
-      print('Event TaskLoadEvent added.');
     },
     expect: () {
-      print('Expecting TaskLoadingState and TaskErrorState...');
       return [
         isA<TaskLoadingState>(),
         isA<TaskErrorState>().having(
