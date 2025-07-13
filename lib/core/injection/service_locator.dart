@@ -15,7 +15,9 @@ void setupLocator() {
   sl.registerLazySingleton<HttpClient>(() => HttpClientImpl(sl<http.Client>()));
 
   // Inyectamos el servicio API
-  sl.registerLazySingleton<TaskApiService>(() => TaskApiServiceImpl(sl()));
+  sl.registerLazySingleton<TaskApiService>(() => TaskApiServiceImpl(
+        client: sl<HttpClient>(),
+      ));
 
   // Inyectamos el repositorio con su implementación
   sl.registerLazySingleton<TaskRepository>(() => TaskRepositoryImpl(sl()));

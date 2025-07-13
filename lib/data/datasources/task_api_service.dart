@@ -11,7 +11,9 @@ abstract class TaskApiService {
 class TaskApiServiceImpl implements TaskApiService {
   final HttpClient client;
 
-  TaskApiServiceImpl(this.client);
+  TaskApiServiceImpl({
+    required this.client,
+  });
 
   @override
   Future<List<TaskDto>> fetchTask() async {

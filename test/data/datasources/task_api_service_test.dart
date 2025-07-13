@@ -17,7 +17,9 @@ void main() {
 
   setUp(() {
     mockHttpClient = MockHttpClient();
-    taskApiService = TaskApiServiceImpl(mockHttpClient);
+    taskApiService = TaskApiServiceImpl(
+      client: mockHttpClient,
+    );
   });
 
   group('fetchTask', () {
